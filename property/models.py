@@ -5,10 +5,6 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Flat(models.Model):
-    owner = models.CharField('ФИО владельца:', max_length=200)
-    owner_pure_phone = PhoneNumberField('Нормализованный номер владельца',
-                                        region="RU", null=True, blank=True)
-    owners_phonenumber = models.CharField('Номер владельца:', max_length=20)
     created_at = models.DateTimeField(
         'Когда создано объявление:',
         default=timezone.now,
@@ -72,14 +68,22 @@ class Complaint(models.Model):
 
 class Owner(models.Model):
     full_name = models.CharField(verbose_name='ФИО владельца',
-                                 max_length=200)
+                                 max_length=200,
+                                 db_index=True)
     phonenumber = PhoneNumberField(verbose_name='Номер владельца',
-                                   region="RU", null=True)
-    pure_phone = PhoneNumberField('Нормализованный номер владельца',
-                                  region="RU", null=True, blank=True)
-    flat = models.ManyToManyField(Flat,
-                                  verbose_name='Квартиры в собственности',
-                                  related_name='flat_owners')
+                                   region="RU",
+                                   null=True,
+                                   db_index=True)
+    pure_phone = PhoneNumberField(
+        verbose_name='Нормализованный номер владельца',
+        region="RU",
+        null=True,
+        blank=True,
+        db_index=True)
+    owned_flats = models.ManyToManyField(Flat,
+                                         verbose_name='Квартиры в собственности',
+                                         related_name='flat_owners',
+                                         db_index=True)
 
     def __str__(self):
         return self.full_name
