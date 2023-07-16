@@ -1,26 +1,46 @@
-# Сайт риэлторского агентства
+# Website of real estate agency
 
-Сайт находится в разработке, поэтому доступна только страница со списком квартир и админка для наполнения БД.
+The website is under development, so only the page with the list of flats and admin for filling the database are available.
 
-## Запуск
+### How to run
 
-- Скачайте код
-- Установите зависимости командой `pip install -r requirements.txt`
-- Создайте файл базы данных и сразу примените все миграции командой `python3 manage.py migrate`
-- Запустите сервер командой `python3 manage.py runserver`
+1. Firstly, you have to install python and pip (package-management system) if they haven't been already installed.
 
-## Переменные окружения
+2. Create a virtual environment with its own independent set of packages using [virtualenv/venv](https://docs.python.org/3/library/venv.html). It'll help you to isolate the project from the packages located in the base environment.
 
-Часть настроек проекта берётся из переменных окружения. Чтобы их определить, создайте файл `.env` рядом с `manage.py` и запишите туда данные в таком формате: `ПЕРЕМЕННАЯ=значение`.
+3. Install all the packages used in this project, in your virtual environment which you've created on the step 2. Use the `requirements.txt` file to install dependencies:
+    ```sh
+    pip install -r requirements.txt
+    ```
+4. Create a database file and apply all migrations at once:
+    ```sh
+    python3 manage.py migrate
+    ```
+   
+5. Run the server for development and 
+    ```sh
+    python3 manage.py runserver
+    ```
 
-Доступны 3 переменные:
-- `DEBUG` — дебаг-режим. Поставьте True, чтобы увидеть отладочную информацию в случае ошибки.
-- `SECRET_KEY` — секретный ключ проекта
-- `ALLOWED_HOSTS` — см [документацию Django](https://docs.djangoproject.com/en/3.1/ref/settings/#allowed-hosts).
-- `DATABASE` — однострочный адрес к базе данных, например: `sqlite:///db.sqlite3`. Больше информации в [документации](https://github.com/jacobian/dj-database-url)
+6. Create superuser to see/edit the data on admin page:
+    Input
+    ```sh
+    python3 manage.py createsuperuser
+    ```
 
-    Это позволяет легко переключаться между базами данных: PostgreSQL, MySQL, SQLite — без разницы, нужно лишь подставить нужный адрес.
+7. Open admin page and login in with password, you've entered on previous step:
+   `http://127.0.0.1:8000/admin/`
 
-## Цели проекта
+### Environment variables
 
-Код написан в учебных целях — это урок в курсе по Python и веб-разработке на сайте [Devman](https://dvmn.org).
+Some of the project settings come from environment variables. To define them, create a file `.env` next to `manage.py` and write data in this format: `VARIABLE=value`.
+
+Three variables are available:
+- `DEBUG` — debug mode. Set it to True to see debugging information in case of an error.
+- `SECRET_KEY` — project secret key
+- `ALLOWED_HOSTS` — see [Django docs](https://docs.djangoproject.com/en/3.1/ref/settings/#allowed-hosts).
+
+
+## Project Objectives
+
+The code is written for educational purposes
