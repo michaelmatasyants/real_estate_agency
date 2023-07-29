@@ -10,7 +10,6 @@ def copy_flat_owners_in_owner(apps, schema_editor):
         Owner.objects.get_or_create(full_name=flat.owner,
                                     phonenumber=flat.owners_phonenumber,
                                     pure_phone=flat.owner_pure_phone)
-        flat.save()
 
 
 class Migration(migrations.Migration):
