@@ -13,9 +13,8 @@ def fill_owner_pure_phone(apps, schema_editor):
             flat.owner_pure_phone = phonenumbers.format_number(
                 parsed_phonenumber,
                 phonenumbers.PhoneNumberFormat.INTERNATIONAL)
-            flat.save()
-            continue
-        flat.owner_pure_phone = None
+        else:
+            flat.owner_pure_phone = None
         flat.save()
 
 
