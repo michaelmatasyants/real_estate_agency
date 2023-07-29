@@ -13,6 +13,10 @@ def fill_field_new_building(apps, scema_editor):
         flat.new_building = False
         flat.save()
 
+    Flat.objects.filter(new_building=None, construction_year__gte=2015).update(
+         new_building=True)
+    Flat.objects.filter(new_building=None, construction_year__lt=2015).update(
+         new_building=False)
 
 class Migration(migrations.Migration):
 
