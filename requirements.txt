@@ -2,3 +2,4 @@ Django==4.2.3
 environs==5.2.1
 dj-database-url==0.5.0
 phonenumbers==8.13.16
+django-phonenumber-field==7.1.0
