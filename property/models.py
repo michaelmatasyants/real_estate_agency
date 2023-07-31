@@ -51,7 +51,7 @@ class Flat(models.Model):
 
     new_building = models.BooleanField(verbose_name='Новостройка:', null=True)
     liked_by = models.ManyToManyField(User, verbose_name='Кто лайкнул:',
-                                      related_name="flats",
+                                      related_name="all_flats",
                                       blank=True)
 
     def __str__(self):
