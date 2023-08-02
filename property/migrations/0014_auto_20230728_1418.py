@@ -12,15 +12,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='owner',
-            name='owned_flats',
-        ),
-        migrations.AddField(
-            model_name='owner',
-            name='flats',
-            field=models.ManyToManyField(db_index=True, related_name='owners', to='property.Flat', verbose_name='Квартиры в собственности'),
-        ),
         migrations.AlterField(
             model_name='complaint',
             name='flat',

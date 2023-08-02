@@ -11,11 +11,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RenameField(
-            model_name='owner',
-            old_name='flat',
-            new_name='owned_flats',
-        ),
         migrations.AlterField(
             model_name='flat',
             name='owner',
