@@ -12,7 +12,7 @@ class FlatAdmin(admin.ModelAdmin):
     search_fields = ['town', 'address']
     readonly_fields = ['created_at']
     list_display = [
-        'owners', 'address', 'price', 'new_building',
+        'get_owners', 'address', 'price', 'new_building',
         'construction_year', 'town'
         ]
     list_editable = ['new_building']
@@ -21,6 +21,12 @@ class FlatAdmin(admin.ModelAdmin):
     inlines = [
         OwnerInline,
     ]
+
+    @admin.display(description='Собственник')
+    def get_owners(self, flat_object):
+        '''Gets owners from Owner model'''
+        return [owner.full_name for owner in flat_object.owners.all()]
+
 
 @admin.register(Complaint)
 class ComplaintAdmin(admin.ModelAdmin):
