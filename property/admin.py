@@ -6,6 +6,8 @@ from .models import Flat, Complaint, Owner
 class OwnerInline(admin.TabularInline):
     model = Owner.flats.through
     raw_id_fields = ['owner']
+    verbose_name_plural = 'Связь собственников и квартир'
+
 
 @admin.register(Flat)
 class FlatAdmin(admin.ModelAdmin):
